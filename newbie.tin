@@ -1,17 +1,38 @@
 #class newbie open;
-#action {蝴蝶进入了你的梦里，亦或是你进入了蝴蝶的梦中} {
-    set brief 1;
-   #delay 5 {hp;
-   #delay 5 {newbie.start;
-}}};
 
-#alias {newbie.start} {
+#action {蝴蝶进入了你的梦里，亦或是你进入了蝴蝶的梦中} {
+  set brief 3;
+  #delay 5 {score;
+    #delay 5 {newbie_start;
+    };
+  };
+};
+
+#alias {newbie_start} {
+    score;
     look river;
     get hulu;
     get ye guo;
-    #10 eat ye guo;
-    fill hulu;
-    #15 drink hulu;
+    #delay 5 {
+        #10 eat ye guo;
+        fill hulu;
+        #15 drink hulu;
+         hp;
+    };
+};
+
+#alias {newbie_sleep} {
+  #if {"$mygender"=="男"} {
+    w};
+  #else {
+    e};
+};
+
+#alias {newbie_out} {
+  #if {"$mygender"=="男"} {
+    e};
+  #else {
+    w};
 };
 
 #action {终于吃饱喝足了，你现在可以去周围探索下，看看有没有能直接出去的出口} {
@@ -72,7 +93,7 @@
 #action {终于把澡洗完了，去问庄主关于闯荡江湖的事情吧} {
     wear all;
     #delay {2} {
-        s;e;ask you kunyi about 闯荡江湖;
+        s;newbie_out;ask you kunyi about 闯荡江湖;
     };
 };
 
@@ -83,7 +104,7 @@
 
 #action {这场比试消耗了你不少的体力，回厢房去休息(sleep)一下吧。} {
     #delay {2} {
-        s;w;
+        s;newbie_sleep;
         #var newbiesk 2;
         sleep;
     };
@@ -147,9 +168,7 @@
 
 #action {我需要一壶烧刀子和一把钢剑，你去酒铺、铁匠铺给我买回来} {
     s;
-    #delay {5} {
-
-};
+    #delay {5} {#0};
 };
 
 #action {先别走，还没给你钱} {
@@ -239,13 +258,13 @@
     xue wu shi for taiyi-shengong 10;
     xue wu shi for taiyi-you 10;
     xue wu shi for taiyi-zhang 10;
-    s;w;sleep;
+    s;newbie_sleep;sleep;
 };
 
 #action {你一觉醒来，精神抖擞地活动了几下手脚。} {
     #delay {3} {
         #if {$newbiesk == 2} {
-            e;ask you kunyi about 闯荡江湖;
+            newbie_out;ask you kunyi about 闯荡江湖;
         };
 
         #if {$newbiesk == 1} {
@@ -253,7 +272,7 @@
         };
 
         #if {$newbiesk == 0} {
-            e;n;
+            newbie_out;n;
             #10 xue wu shi for force 1;
             #10 xue wu shi for dodge 1;
             #delay {2} {
@@ -268,7 +287,7 @@
                         #delay {2} {
                             #10 xue wu shi for taiyi-zhang 1;
                             #delay {2} {
-                                s;w;sleep;
+                                s;newbie_sleep;sleep;
                             };
                         };
                     };
@@ -287,10 +306,10 @@
                             jifa parry taiyi-jian;
                             #delay {3} {
                                 jifa strike taiyi-zhang;
-                                #delay {10} {
+                                #delay {3} {
                                     bei taiyi-zhang;
                                     #delay {2} {
-                                        e;n;
+                                        newbie_out;n;
                                         #delay {2} {
                                             fight wu shi;
                                         };
@@ -303,28 +322,25 @@
             };
         };
         #if {$newbiesk == 4} {
-             #delay 2 {e;n;
+             #delay 2 {newbie_out;n;
                    #delay 2 {fight wushi;
                    };
               };
         };
     };
 };
+
 #action {把学到的功夫都激发起来吧！} {
     sleep;#var newbiesk 3;
-}
+};
 
 #action {这里禁止战斗} {
     #var newbiesk 4;
-}
-
-#action {把学到的功夫都激发起来吧！} {
-    sleep;#var newbiesk 3;
-}
+};
 
 #action {趁热打铁去练习一级太乙剑法，一定能有收获的。} {
     #var newbiesk 1;
-    s;w;
+    s;newbie_sleep;
     lian sword 1
 };
 
@@ -340,14 +356,14 @@
 
 #action {你握了握手中的剑，感觉自己有点功夫了，去找找游鲲翼，再向他打听闯荡江湖的事！} {
     #delay {2} {
-        e;
+        newbie_out;
         ask you kunyi about 闯荡江湖;
     };
 };
 
-#alias gkt {say 终于要正式上阵了，去树林手刃幼虎，以示武勇};
+#alias gkt {#showme 终于要正式上阵了，去树林手刃幼虎，以示武勇};
 
-#action {终于要正式上阵了，去树林手刃幼虎，以示武勇} { 
+#action {终于要正式上阵了，去树林手刃幼虎，以示武勇} {
     #delay {2} {
         s;s;
         #delay {2} {
@@ -356,31 +372,11 @@
                 s;s;s;s;
                 #delay {2} {
                     climb down;
-                    #delay {20} {
+                    #delay {10} {
                         w;
                         #delay {2} {
                             kill lao hu;
-                            #delay {2} {
-                                perform sword.bafang;
-                                #delay {3} {
-                                    perform sword.bafang;
-                                };
-                                #delay {5} {
-                                    perform sword.bafang;
-                                };
-                                #delay {8} {
-                                    perform sword.bafang;
-                                };
-                                #delay {10} {
-                                    perform sword.bafang;
-                                };
-                                #delay {12} {
-                                    perform sword.bafang;
-                                };
-                                #delay {14} {
-                                    perform sword.bafang;
-                                };
-                            };
+			      #tic {newbie_dazhao} {perform sword.bafang} {1};
                         };
                     };
                 };
@@ -389,7 +385,15 @@
     };
 };
 
+#action {你迷迷糊糊的听到一声怒吼：孽畜，不得伤人！} {
+  #unvar newbiesk;
+  #untic newbie_dazhao;
+  #delay 100 {newbie_out;gkt};
+};
+
 #action {手刃了恶虎，你感觉自己威风凛凛！回去再向游鲲翼问问能不能闯荡江湖了吧！} {
+    #unvar newbiesk;
+    #untic newbie_dazhao;
     #delay {10} {
         e;
         #delay {2} {
@@ -426,10 +430,18 @@
 };
 
 #action {既然英雄要送你，却之不恭。在杏子林和游庄主道别。} {
-    #2 s;open gate;
-    #delay {1} {
-        s;s;s;w
+    #2 s;open gate;open gate;
+    #delay {0.5} {
+        s;s;s;w;set brief 0;
     };
+};
+
+#action {去车马行坐车到扬州开始你的江湖路吧！} {
+   s;gu;
+   #delay 5 {qu yangzhou;
+     #delay 5 {qu yangzhou;
+     };
+   };
 };
 
 #action {你刚在三分钟内睡过一觉} {
@@ -440,7 +452,7 @@
 
 #action {你怎么乱跑没跟着我呢，我先回正厅去了，你过来重新跟随我吧！} {
     #delay {2} {
-        e;
+        newbie_out;
         #delay {10} {
             follow a shu;
         };
