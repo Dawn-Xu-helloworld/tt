@@ -377,17 +377,18 @@ Tintin++可以写触发器获取链接<br>
 #alias {slink} {#showme $link};
 #nop 手动调用浏览器;
 #alias {mxp} {#sys termux-open-url $link};
-#act {http://pkuxkx.com/antirobot/robot.php?filename=%1}
-{
-    #var link {http://pkuxkx.com/antirobot/robot.php?filename=%1};
-    #nop 此处#nop取消可以实时调用;
-    #nop #sys termux-open-url $link;
-}
-#act {http://pkuxkx.net/antirobot/robot.php?filename=%1}
-{
-    #var link {http://pkuxkx.net/antirobot/robot.php?filename=%1};
-    #nop #sys termux-open-url $link;
-}
+#alias {mxp} {#sys termux-open-url $link};
+#action {^http://fullme.pkuxkx.net/robot.php?filename=%1} {
+  #var link {http://fullme.pkuxkx.net/robot.php?filename=%1};
+  #nop mxp;
+  #nop #system sh bot/fullme.sh %1;
+};
+
+#act {^http://fullme.pkuxkx.com/robot.php?filename=%1} {
+	#var link {http://fullme.pkuxkx.com/robot.php?filename=%1};
+  #nop mxp;
+  #nop #system sh bot/fullme.sh %1;
+};
 ```
 
 __新手推荐丐帮污衣派__

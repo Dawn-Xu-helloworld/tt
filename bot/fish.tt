@@ -4,7 +4,7 @@
 
 #tic {fisha} {l yuer} {77};
 
-#tic {fishaa} {#show <afa>开始钓鱼指令【fishaa 】。<099>;#untic fishaa} {1};
+#show <afa>开始钓鱼指令【fishaa 】。;
 
 #var fisha 1;
 
@@ -17,7 +17,7 @@
 };
     
 #alias {fish.aa} {
-  set brief 2;
+  set brief 0;
   e;s;
   #delay 1 {buy yugou;
   fishaa;
@@ -56,8 +56,8 @@
 }}};
 
 #alias {fish.c} {
- #delay 1 {buy im_234;
- #delay 1 {buy im_18;
+ #delay 1 {buy im_211;
+ #delay 1 {buy im_415;
  #delay 3 {w;n;n;w;
  #delay 5 {cun all gold;
  #delay 5 {qu 2 silver;
