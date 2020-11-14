@@ -35,9 +35,9 @@
 };
 
 #nop 走路速度控制,分别为每秒上限步数、超限等待时间、正常行走间隔时间;
-#var xiaoyao.accu 15;
+#var xiaoyao.accu 12;
 #var xiaoyao.delay_long 0.5;
-#var xiaoyao.delay_short 0.05;
+#var xiaoyao.delay_short 0.08;
 
 #alias gt {
     #if {"%1"==""} {
@@ -1061,7 +1061,7 @@
     #unvar tmp;
 };
 
-#var SUF {%s-%s{\[大.*国\][ ]*|}{\[(城内|门派|野外|.*势力范围)\][ ]*(|\[存盘点\])(|\[玩家储物柜\])|}%s};
+#var SUF {%s-%s{\[大.*国\][ ]*|}{\[(城内|门派|野外|.*势力范围)\][ ]*(|\[存盘点\])(|\[玩家储物柜\])|(|(/\w).+)}%s};
 
 #action {^戈壁${SUF}$} {set_position {bt}};
 #action {^醉仙楼二楼${SUF}$} {set_position {bxs}};

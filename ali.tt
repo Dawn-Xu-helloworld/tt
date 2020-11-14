@@ -100,16 +100,20 @@
 
 #nop 自动返回原点;
 #alias {pg} {
-#path new;
-#class pgtmp open;
-#act {%*这个方向没有出路。} {#path del};
-#class pgtmp close;
-#echo {%c%h} {light yellow}{【开始记录路径，指令pb返回】}};
+  #path new;
+  #class pgtmp open;
+  #act {%*这个方向没有出路。} {#path del};
+  #class pgtmp close;
+  #echo {%c%h} {light yellow}{【开始记录路径，指令pb返回】}
+};
 #alias {pb} {
-#path save backward ptmp;$ptmp;
-#path end;
-#class pgtmp kill;
-#delay 2 {#echo {%c%h} {light yellow}{【已回原点，指令pg记录新路径】}}};
+  #path save backward ptmp;
+  #path load $ptmp;
+  #path run 0.2;
+  #path end;
+  #class pgtmp kill;
+  #delay 3 {#echo {%c%h} {light yellow}{【已回原点，指令pg记录新路径】}}
+};
 
 #nop 捡垃圾卖钱;
 #alias {sda}{#class sda read bot/sda.tt};
