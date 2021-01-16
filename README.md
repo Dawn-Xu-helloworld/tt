@@ -17,7 +17,7 @@
 Termux 是一个安卓系统上的终端模拟器，  
 TinTin++ 是一个跨平台的 MUDs 客户端。  
 支持：  
-Mac OS X,IOS,Android,Linux,Windows。  
+macOS,iOS,Android,Linux,Windows。  
 
 北大侠客行可使用 TinTin++ 客户端连接，  
 TinTin++ 可以运行在 Termux 上。
@@ -28,12 +28,12 @@ __注：客户端用法与其他平台一致。__
 
 ### 安卓怎么进入MUDs游戏？
 
-- 1.安装Termux
+- 1.安装 Termux
 
 style插件非必选，可配置字体和主题风格。  
 api插件可以帮助使用安卓硬件等资源。
 
-- 2.在Termux中安装必须软件及配置
+- 2.在 Termux 中安装必须软件及配置
 
 Termux需要安装 MUDs 客户端，如：TinTin++ 、Go-Mud ，
 环境配置可以帮助提升游戏体验(比如解决乱码和快速进入游戏)。
@@ -368,7 +368,7 @@ Termux可以直接调用浏览器访问链接，
 
 > termux-open-url <链接>
 
-Tintin++可以写触发器获取链接<br>
+Tintin++可以写触发器获取链接：  
 
 ```
 #nop 简写;
@@ -377,7 +377,7 @@ Tintin++可以写触发器获取链接<br>
 #alias {slink} {#showme $link};
 #nop 手动调用浏览器;
 #alias {mxp} {#sys termux-open-url $link};
-#alias {mxp} {#sys termux-open-url $link};
+
 #action {^http://fullme.pkuxkx.net/robot.php?filename=%1} {
   #var link {http://fullme.pkuxkx.net/robot.php?filename=%1};
   #nop mxp;
@@ -390,6 +390,9 @@ Tintin++可以写触发器获取链接<br>
   #nop #system sh bot/fullme.sh %1;
 };
 ```
+SSH 连接安卓本机 chroot 容器，也可调用浏览器查看图片。
+
+> unchroot am start -a android.intent.action.VIEW -d  \<链接\>
 
 __新手推荐丐帮污衣派__
 
