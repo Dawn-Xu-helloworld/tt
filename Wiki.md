@@ -111,8 +111,8 @@
 - **TinTin++**
 
 这是一个MUDs游戏客户端，  
-支持：    
-Mac OS X,IOS,Android,Linux,Windows。
+支持：  
+macOS,iOS,Android,Linux,Windows。
 
 在这个页面上，  
 你会发现使用  TinTin++ 的使用介绍。    
@@ -120,7 +120,7 @@ Mac OS X,IOS,Android,Linux,Windows。
 
 - **启动及结束**
 
-启动 TinTin++ 的语法是: <br>
+启动 TinTin++ 的语法是:   
 > ./tt++ 【配置文件名】
 
 您可以在下面的文件部分阅读更多关于命令文件的信息。不过，记住一件事。启动 TinTin++ 时定义的所有操作、别名、替换等都是由所有会话继承的。
@@ -137,7 +137,7 @@ Mac OS X,IOS,Android,Linux,Windows。
 <br>
 (这可以用 #config 来改变)。
 
-> 示例: #help <br>
+> 示例: #help   
     -- #help是客户端命令，不会发送到服务端。
 
 键入时，TinTin++ 的所有命令可以缩写。
@@ -1615,7 +1615,7 @@ Foreach 命令就像一个简化的循环。列表中的每个单词将在执行
 %l  |	Lowercase	|参数小写
 %m  |	Mathexp	|进行数学运算
 %n	  |Name	|第一个字母大写
-%p  |	String|带前导和尾随空格
+%p  |	String|剥离前导和尾随空格
 %r|	Reverse|	翻转参数(看上下文)
 %s|	String	|普通字符串参数
 %t	|Format|	在参数中使用[strftime](http://www.manpagez.com/man/3/strftime/)格式创建时间戳。
