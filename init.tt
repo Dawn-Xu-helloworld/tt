@@ -24,6 +24,19 @@
 #alias pku {#class tmp kill;#re pku.tt};
 #class tmp close;
 
+#nop screen 滑动，termux启用正常，juicessh异常;
+#alias slide {
+  #config mouse on;
+  #class slide open;
+  #event {SCROLLED MOUSE WHEEL UP} {#buffer up 1};
+  #event {SCROLLED MOUSE WHEEL DOWN} {#buffer down 2};
+  #class slide close;
+};
+#alias unslide {
+  #config mouse off;
+  #class slide kill;
+};
+
 #echo {%c%h} {light yellow};
 #echo {%c%h} {light green} {【请输入pku指令连接至北大侠客行】};
 #echo {%c%h} {light green} {【自定义命令帮助指令omg】};
