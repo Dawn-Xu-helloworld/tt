@@ -3,13 +3,17 @@
 #re act.tt;
 #re config.tt;
 #re goto.tt;
-#re emote.tt;
 #re colorpad.tt;
 
 #nop 断线事件;
-#event {SESSION ACTIVATED}
-{
+#event {SESSION ACTIVATED} {
 	#if {"%0" == "gts"} {#read init.tt}
+};
+
+#nop emote表情脚本;
+#event {SESSION CONNECTED} {
+   #nop #if {"%0" == "pku"} {#read emote.tt};
+   #read emote.tt;
 };
 
 #nop 屏蔽连接提示;
