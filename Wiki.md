@@ -3181,13 +3181,31 @@ $return
 
 ## Prompt
 
-> 语法: #prompt {message} {newmessage} {row}
+> 语法: #prompt {text} {new text} {row #} {col #}
 
-此命令的工作方式与替代命令substitute非常相似，仅在拆分模式#split下工作。如果没有给出行号，它将替换 mud 消息并将其放在拆分行中。
+prompt 是 `#split` 分割窗口模式的一项特性功能，  
+它将从服务器按行接收并显示在分割后的终端屏幕上。  
 
-可选参数row允许提示自定义拆分屏幕。正数将写入提示 #rows up 从屏幕底部。负数将写下提示 #rows down 从屏幕顶部。
+你可以使用相同的方式来定义 {text}  和 {new text} 以做替代。
 
-有关模式匹配的信息，请参见正则表达式[Regular Expressions'](#regular-expressions)一节。
+行号 raw 是可选且实用的参数，有助于非标准屏幕拆分模式的显示。  
+正行数从顶部绘制 #raw 行；  
+而负行数从底部绘制 #raw 行；    
+没有参数时 `#prompt` 将写入默认的分割行，即输入行上面的一行，通常位于 `raw -2`。
+
+列号 col 是可选的参数，可用于设置列索引。  
+正列数从左部绘制 #col 列；  
+而负行列数从右部绘制 #col 列；  
+如果列参数为空，tintin 将在打印行的开头前先把行的内容清空。
+
+[#showme](#showme) 命令也可以使用 raw、col 参数，因此使用 `#show` 命令在也可以在分割窗口上显示文本。
+
+注: 有关拆分窗口模式的更多信息，请参阅 `#help split`。
+
+注: 有关替换文本的更多信息，请参见 `#help substitute`。
+
+有关模式匹配的信息，  
+请参见正则表达式 [Regular Expressions'](#regular-expressions) 一节。
 
 > 示例: #prompt {[%1/%2hp]} {[<078>%1/%2hp]}
 
@@ -3649,15 +3667,26 @@ Screen 屏幕命令提供了各种屏幕操作命令和实用程序。
 
 ## Showme
 
-> 语法: #showme {message} {line number}
+> 语法: #show {string} {row} {col}
 
-Showme 命令显示的消息可以被触发，并且可以用于调试操作、替换等。由于变量也被替换，这也可以用于显示信息。
+show 命令将字符串显示到终端，不会发送到服务器，可用于状态、警告等。 
+ 
+show 命令显示的消息可以被触发，并且可以用于调试操作、替换等。由于变量也被替换，这也可以用于显示信息。
 
-> 示例: #showme $bla
+如果你想避免 `#show` 显示的信息被触发，  
+可以使用：`#line ignore #show {<string>}`.
 
+```
+示例：
+#tick {TICK} {#delay 50 #show 10秒后警告!!!} {60}
+
+示例: 
+#showme $bla
 如果定义了变量 “bla”，这将显示 bla 设置为的任何内容。
+```
 
-行号是可选的，工作方式与 [#prompt](#prompt) 命令中的行号相同。
+行号和列号是可选的，  
+工作方式与 [#prompt](#prompt) 命令相同。
 
 另可参见: [Buffer](#buffer), [Echo](#echo) and [Grep](#grep).
 
@@ -3944,7 +3973,20 @@ chat I was on ${cool website!} yesterday!
 
 注意: 不存在变量的嵌套索引为 0，因此您可以使用 `#if {&{variable}}` 检查变量是否存在。
 
-注意: 您可以使用 #unvariable 命令删除变量。
+注意: 您可以使用 #unvariable 命令删除变量（对套嵌中的变量也适用）。
+
+```
+来自蓝日的疑问：
+#var mylist {
+	{a} {str1}
+	{b} {str2}
+	{c}	{str3}
+};
+如何删除{c} {str3}这对键值？
+
+答：
+#unvar mylist[c]
+```
 
 另可参见: [Format](#format), [Function](#function), [Local](#local), [Math](#math), [List](#list), [Replace](#replace) and [Script](#script).
 

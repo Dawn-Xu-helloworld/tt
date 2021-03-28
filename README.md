@@ -2,6 +2,7 @@
 
 |[TinTin++](https://tintin.sourceforge.io/)
 |[Termux](https://github.com/termux/termux-app)|  
+|[TinTin++ • Github](https://github.com/scandum/tintin)
 |[TinTin++中文手册](./Wiki.md)|  
 |[北侠官网](http://pkuxkx.net/)
 |[北侠Wiki](http://pkuxkx.net/wiki/)
@@ -11,7 +12,7 @@
 ### 这里是做什么的？
 
 本仓库用于存储 xgg@pkuxkx 的游戏配置，  
-以及部分相关脚本和文档。
+以及部分 TinTin++ 相关脚本和文档。
 
 北大侠客行是一个 MUDs 文字游戏，  
 Termux 是一个安卓系统上的终端模拟器，  
@@ -36,7 +37,7 @@ api插件可以帮助使用安卓硬件等资源。
 - 2.在 Termux 中安装必须软件及配置
 
 Termux需要安装 MUDs 客户端，如：TinTin++ 、Go-Mud ，
-环境配置可以帮助提升游戏体验(比如解决乱码和快速进入游戏)。
+环境配置可以帮助提升游戏体验(解决乱码和快速进入游戏)。
 
 - 3.配置文件管理
 
@@ -89,13 +90,13 @@ __安装完毕后，可跳转到screen转码部分。__
 
 --- 
 
-注：Linuxdeploy 是一款能在安卓手机上利用 chroot 命令部署任意 linux 发行版的 app（需要root权限、比Termux更强大）。  
+注：Linuxdeploy 是一款能在安卓手机上利用 chroot 命令部署任意 linux 发行版的 app（需要 root 权限、比 Termux 更强大）。  
 使用 Linuxdeploy 在手机上部署的 Debian 系统安装 `tintin++` 的路径在 `/usr/games/tt++`。
 
 由于 Debian 上 tintin++ 版本比较老，    
 也可以使用源码进行编译安装。
 
-TinTin++ 可在 [Github](https://github.com/scandum/tintin) 获取源码。
+TinTin++ 可在 [【Github】](https://github.com/scandum/tintin) 获取源码。
 
 
 Termux不用看下段内容。
@@ -255,7 +256,7 @@ set encoding=utf-8
 
 2.批量转换脚本编码
 
-使用 [【gbktoutf8】](https://github.com/fluffos/gbk2utf8) 工具进行转换。
+使用 [【gbk2utf8】](https://github.com/fluffos/gbk2utf8) 工具进行转换。
 
 ### vim语法高亮
 
@@ -308,7 +309,8 @@ vim init.tt
 
 - TinTin++ 官网提供了从电脑端 wintin++ 使用 `chat` 传输配置的方法。
 
-- Termux内建的 `termux-setup-storage` 接口可以在 `$HOME` 用户目录中创建一个对内部存储的符号链接，我们可以直接访问内存卡（内部存储）或者建立相应目录的符号链接。
+- Termux 内建的 `termux-setup-storage` 接口可以在 `$HOME` 用户目录中创建一个对内部存储的符号链接，  
+我们可以直接访问内存卡（内部存储）或者建立相应目录的符号链接。
 
 以下将文件直接存放到手机上：
 
@@ -370,7 +372,7 @@ Termux 可以直接调用浏览器访问链接，
 
 > termux-open-url <链接>
 
-Tintin++可以写触发器获取链接：  
+TinTin++可以写触发器获取链接：  
 
 ```
 #nop 简写;
