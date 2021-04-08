@@ -3751,18 +3751,23 @@ Speedwalking 允许您键入不以分号分隔的多个方向，现在它允许�
 
 split 命令允许创建顶部状态栏，左右状态条，滚动区域，底部状态栏和输入行。 
 
-```
-         ╭────────────────────────────────╮
-         │            top bar             │
-         ├──────┬──────────────────┬──────┤
-         │ left │    scrolling     │ right│
-         │ bar  │     region       │  bar │
-         ├──────┴──────────────────┴──────┤
-         │           bottom bar           │
-         ├────────────────────────────────┤
-         │           input bar            │
-         ╰────────────────────────────────╯
-```
+屏幕分割区域如下表所示：  
+<table>
+ <tr >
+	    <td align="center"colspan="3">顶部状态栏</td>
+	</tr>
+ <tr >
+	    <td align="center">左部状态条</td>
+	    <td align="center">滚动区域</td>
+	    <td align="center">右部状态条</td>
+	</tr>
+ <tr >
+	    <td align="center"colspan="3">底部状态栏</td>
+	</tr>
+ <tr >
+	    <td align="center"colspan="3">输入条</td>
+	</tr>
+</table>
 
 默认情况下，底部状态栏填充有破折号 ---，破折号线条也被称为分割线。滚动区域也被称为主屏幕，所有传入文本默认显示在这里。
 
