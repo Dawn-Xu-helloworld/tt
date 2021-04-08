@@ -78,6 +78,16 @@ Termux需要安装 MUDs 客户端，如：TinTin++ 、Go-Mud ，
 
 - 访问[【Termux】](https://github.com/termux/termux-app)获取
 
+### 一键初始化 Termux 环境
+
+复制并执行下列命令：
+```
+bash <(curl -s -L https://raw.fastgit.org/zixijian/shell/master/shell/tt4t.sh)
+```
+然后将逍遥行等插件脚本放入内存卡（内部存储）根目录 tintin 文件夹即可开始游戏。  
+
+注意：以下步骤可以不用做了，qaq 。
+
 ### 安装vim git screen tintin++
 
 打开Termux输入如下指令安装「必须」软件：
