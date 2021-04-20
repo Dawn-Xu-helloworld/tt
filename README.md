@@ -181,7 +181,7 @@ __可根据需求对工具条进行定制__
 以下是 xgg@pkuxkx 使用的工具条：
 
 ```
-extra-keys = [['ESC','ALT','PGUP','HOME','UP','END','chat ','ENTER'],['TAB','CTRL','PGDN','LEFT','DOWN','RIGHT','orz','BACKSPACE']]
+extra-keys = [['ESC','|','BACKSLASH','HOME','UP','END','PGUP','chat '],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','KEYBOARD']]
 ```
 
 __个性化设置__
