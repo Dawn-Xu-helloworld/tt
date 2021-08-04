@@ -1303,7 +1303,7 @@ Elseif 语句应该遵循 #IF 或 #ELSEIF 语句，并且仅在语句为 true �
 
 > 语法: #end {message}
 
-终止TinTin程序并返回 shell。在空行上按 ctrl-d 也会调用 #end。
+终止TinTin程序并返回 shell。
 
 消息在终止前立即打印。如果消息是 `\tintin`，将被无声地终止。
 
